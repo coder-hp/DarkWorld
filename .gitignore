@@ -3,3 +3,5 @@ Logs
 obj
 output
 Temp
+*.log
+Library/SourceAssetDB
