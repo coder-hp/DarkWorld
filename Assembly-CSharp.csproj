@@ -97,7 +97,7 @@
     <Compile Include="Assets\Scripts\Utils\NetLoading.cs" />
     <Compile Include="Assets\Scripts\Utils\RandomUtil.cs" />
     <Compile Include="Assets\Scripts\Utils\TimerUtil.cs" />
-    <None Include="Assets\Casual RPG Character\JJ_Casual RPG Character - 8Ekard v1.1\readme.txt" />
+    <None Include="Assets\Art\Casual RPG Character\JJ_Casual RPG Character - 8Ekard v1.1\readme.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.8f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
