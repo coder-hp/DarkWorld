@@ -14,8 +14,6 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: hp
   productName: DarkWorld
-  defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
@@ -47,6 +45,8 @@ PlayerSettings:
   m_ShowSplashAdsSlogan: 0
   m_SloganImage: {fileID: 0}
   m_SloganHeight: 150
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 432
   defaultScreenHeight: 936
@@ -747,7 +747,7 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Build: 0
-    Collab: 1
+    Collab: 0
     ErrorHub: 0
     Hub: 0
     UNet: 1
