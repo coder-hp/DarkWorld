@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 11}
-  m_MinSize: {x: 875, y: 392}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 143
+  controlID: 64
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 342}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
-  controlID: 142
+  controlID: 85
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 1113, y: 342}
   m_MaxSize: {x: 26008, y: 10021}
   vertical: 1
-  controlID: 140
+  controlID: 179
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_MinSize: {x: 1113, y: 342}
   m_MaxSize: {x: 26008, y: 10021}
   vertical: 0
-  controlID: 141
+  controlID: 180
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -278,7 +278,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 392}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &12
 MonoBehaviour:
@@ -374,11 +374,13 @@ MonoBehaviour:
     width: 405
     height: 926
   m_ViewDataDictionary: {fileID: 0}
-  m_InitialOpenURL: file://C:/Users/huangpin/AppData/Roaming/Unity/Packages/node_modules/unityeditor-cloud-hub/dist/index.html?failure=unity_connect
+  m_InitialOpenURL: https://public-cdn.cloud.unitychina.cn/editor/production/cloud/hub
   m_GlobalObjectTypeName: 
   m_RegisteredViewURLs:
   - file://C:/Users/huangpin/AppData/Roaming/Unity/Packages/node_modules/unityeditor-cloud-hub/dist/index.html?failure=unity_connect
+  - https://public-cdn.cloud.unitychina.cn/editor/production/cloud/hub
   m_RegisteredViewInstances:
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &16
 MonoBehaviour:
@@ -430,7 +432,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f0940000
     m_LastClickedID: 38128
-    m_ExpandedIDs: 00000000de7e0000e07e0000e27e0000e47e0000
+    m_ExpandedIDs: 000000002c6e00002e6e0000306e0000326e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -458,7 +460,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000de7e0000e07e0000e27e0000e47e0000
+    m_ExpandedIDs: ffffffff000000002c6e00002e6e0000306e0000326e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -583,7 +585,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: c885ffff
+      m_ExpandedIDs: b6d2ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -697,7 +699,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 13.608618
     speed: 2
-    m_Value: 13.022601
+    m_Value: 13.608618
   m_Ortho:
     m_Target: 0
     speed: 2
