@@ -21,6 +21,8 @@ public class GameScript : MonoBehaviour
 
     public bool isStart = false;
 
+    long ping = 0;
+
     private void Awake()
     {
         s_instance = this;
@@ -34,6 +36,8 @@ public class GameScript : MonoBehaviour
         c2s.Tag = CSParam.NetTag.UserReady.ToString();
         c2s.UserId = UserData.userId;
         Socket_C.getInstance().Send(c2s, false);
+
+        InvokeRepeating("refreshPing", 0.2f, 0.2f);
     }
 
     public void init(List<int> userList)
@@ -54,9 +58,9 @@ public class GameScript : MonoBehaviour
         }
     }
 
-    void Update()
+    void refreshPing()
     {
-        
+        Global.s_instance.Text_ping.text = "ping:" + ping;
     }
 
     HeroScript getHeroById(int userId)
@@ -74,14 +78,22 @@ public class GameScript : MonoBehaviour
 
     //----------------------------网络事件回调----------------------------------------------
 
+    long beforeBroadcastTime = 0;
     void onNetEvent(string data)
     {
         S2CBaseData s2cBaseData = JsonConvert.DeserializeObject<S2CBaseData>(data);
 
         if (s2cBaseData.Tag == CSParam.NetTag.BroadcastState.ToString())
         {
-            //Debug.Log(CommonUtil.jishi_end());
-            //CommonUtil.jishi_start();
+            if (beforeBroadcastTime != 0)
+            {
+                ping = CommonUtil.jishi_end();
+                beforeBroadcastTime = CommonUtil.jishi_start();
+            }
+            else
+            {
+                beforeBroadcastTime = CommonUtil.jishi_start();
+            }
             S2C_BroadcastState s2c = JsonConvert.DeserializeObject<S2C_BroadcastState>(data);
 
             for (int i = 0; i < s2c.list.Count; i++)
@@ -100,7 +112,6 @@ public class GameScript : MonoBehaviour
         }
         else if (s2cBaseData.Tag == CSParam.NetTag.GetUserState.ToString())
         {
-            //Debug.Log("延迟："+CommonUtil.jishi_end());
             S2C_BroadcastState s2c = JsonConvert.DeserializeObject<S2C_BroadcastState>(data);
 
             for (int i = 0; i < s2c.list.Count; i++)

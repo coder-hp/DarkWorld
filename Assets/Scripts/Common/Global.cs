@@ -14,6 +14,8 @@ public class Global : MonoBehaviour
     public Transform canvas_high;
 
     public Text Text_fps;
+    public Text Text_ping;
+
     int fpsFlag = 0;
 
     void Awake()

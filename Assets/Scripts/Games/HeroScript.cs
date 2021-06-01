@@ -21,11 +21,13 @@ public enum HeroAction
 
 public class HeroScript : MonoBehaviour
 {
+    public Transform trans_atkRange;
+
     Animator animator;
     CharacterController character;
 
     float walkSpeed = 6f;
-    float atkRange = 3f;
+    float atkRange = 8f;
     float shanxianDis = 4;
 
     public Transform blood_trans;
@@ -47,6 +49,7 @@ public class HeroScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        trans_atkRange.localScale = new Vector3(atkRange / transform.localScale.x * 2, trans_atkRange.localScale.y, atkRange / transform.localScale.x * 2);
 
         // 增加血条
         {
@@ -129,6 +132,20 @@ public class HeroScript : MonoBehaviour
         {
             blood_trans.transform.localPosition = CommonUtil.WorldPosToUI(Global.s_instance.camera_world, gameObject.transform.position) + new Vector2(0, 100);
         }
+
+        if (isSelf && (heroAction == HeroAction.Idle))
+        {
+            GameObject enemy = CommonUtil.minDistance(gameObject, EnemyManager.list);
+            if (enemy != null)
+            {
+                float juli = CommonUtil.TwoPointDistance3D(transform.position, enemy.transform.position);
+                if (juli <= atkRange)
+                {
+                    float angle = CommonUtil.TwoPointAngle(new Vector2(transform.position.x, transform.position.z), new Vector2(enemy.transform.position.x, enemy.transform.position.z));
+                    transform.rotation = Quaternion.Euler(0, angle, 0);
+                }
+            }
+        }
     }
 
     public void hit(int damage)
@@ -144,9 +161,24 @@ public class HeroScript : MonoBehaviour
     public void onAtk()
     {
         GameObject enemy = CommonUtil.minDistance(gameObject, EnemyManager.list);
-        if (enemy != null && CommonUtil.TwoPointDistance3D(transform.position, enemy.transform.position) <= atkRange)
+        if (enemy != null)
         {
-            enemy.GetComponent<EnemyScript>().hit(2);
+            float juli = CommonUtil.TwoPointDistance3D(transform.position, enemy.transform.position);
+            if (juli <= atkRange)
+            {
+                GameObject pre = Resources.Load("Prefabs/Game/Arrow") as GameObject;
+                GameObject obj = Instantiate(pre);
+                obj.transform.position = (transform.position + new Vector3(0, 1, 0));
+                obj.transform.rotation = transform.rotation;
+                obj.transform.DOMove(enemy.transform.position + new Vector3(0, 1, 0), juli * 0.05f).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    Destroy(obj);
+                });
+            }
+        }
+        else
+        {
+            Debug.Log("enemy != null  aa");
         }
     }
 
@@ -170,23 +202,43 @@ public class HeroScript : MonoBehaviour
             tween_rotate.Pause();
         }
         float time = juli * 0.2f;
-        if(time < 0.1f)
+        if (time < 0.1f)
         {
+            Debug.Log("a");
             time = 0.1f;
         }
-        else if (time > 0.3f)
+        else if (time > 0.2f)
         {
-            time = 0.3f;
+            Debug.Log("b");
+            time = 0.2f;
+        }
+        else
+        {
+            Debug.Log("c");
         }
 
+        //float time = juli * 0.1f;
+        //if (time < 0.1f)
+        //{
+        //    Debug.Log("a");
+        //    time = 0.1f;
+        //}
+        //else if (time > 0.2f)
+        //{
+        //    Debug.Log("b");
+        //    time = 0.2f;
+        //}
+        //else
+        //{
+        //    Debug.Log("c");
+        //}
+
         tween_rotate = transform.DORotate(new Vector3(0, s2c.rotate_y, 0), time).SetEase(Ease.Linear).OnComplete(() =>
-        //tween_rotate = transform.DORotate(new Vector3(0, s2c.rotate_y, 0), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
         {
             tween_rotate.Pause();
         });
 
         tween_move = transform.DOMove(new Vector3(s2c.pos_x, s2c.pos_y, s2c.pos_z), time).SetEase(Ease.Linear).OnComplete(() =>
-        //tween_move = transform.DOMove(new Vector3(s2c.pos_x, s2c.pos_y, s2c.pos_z), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
         {
             tween_move.Pause();
             if (s2c.action == (int)HeroAction.Idle)
@@ -196,45 +248,11 @@ public class HeroScript : MonoBehaviour
         });
 
         animator.Play("run");
-
-        //switch (s2c.action)
-        //{
-        //    case (int)HeroAction.Idle:
-        //        {
-        //            checkAtk();
-        //            break;
-        //        }
-
-        //    case (int)HeroAction.Run:
-        //        {
-        //            animator.Play("run");
-        //            break;
-        //        }
-        //}
-
-        //switch (s2c.action)
-        //{
-        //    case (int)HeroAction.Idle:
-        //        {
-        //            character.enabled = false;
-        //            transform.position = new Vector3(s2c.pos_x, s2c.pos_y, s2c.pos_z);
-        //            character.enabled = true;
-        //            idle();
-        //            break;
-        //        }
-
-        //    case (int)HeroAction.Run:
-        //        {
-        //            run(s2c.rotate_y);
-        //            break;
-        //        }
-        //}
     }
 
     void idle()
     {
         checkAtk();
-
         heroAction = HeroAction.Idle;
     }
 
@@ -278,11 +296,14 @@ public class HeroScript : MonoBehaviour
         GameObject enemy = CommonUtil.minDistance(gameObject, EnemyManager.list);
         if (enemy != null && CommonUtil.TwoPointDistance3D(transform.position, enemy.transform.position) <= atkRange)
         {
+            float angle = CommonUtil.TwoPointAngle(new Vector2(transform.position.x, transform.position.z), new Vector2(enemy.transform.position.x, enemy.transform.position.z));
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+
             animator.Play("attack" + RandomUtil.getRandom(1, 2), 0, 0);
         }
         else
         {
-            animator.Play("idle");
+            animator.Play("idle" + RandomUtil.getRandom(1, 2));
         }
     }
 }

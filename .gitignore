@@ -4,4 +4,5 @@ obj
 output
 Temp
 *.log
+.vs
 Library/SourceAssetDB

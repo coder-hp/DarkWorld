@@ -28,9 +28,10 @@ public class CommonUtil
     }
 
     // 计时开始
-    public static void jishi_start()
+    public static long jishi_start()
     {
         time_start = getTimeStamp_Millisecond();
+        return time_start;
     }
 
     // 计时结束

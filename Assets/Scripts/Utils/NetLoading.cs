@@ -16,6 +16,7 @@ public class NetLoading : MonoBehaviour
     public void show()
     {
         gameObject.SetActive(true);
+        Invoke("close",3);
     }
 
     public void close()

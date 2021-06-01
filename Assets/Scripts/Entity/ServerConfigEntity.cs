@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ServerConfigData
 {
+    public int id;
     public int state;
     public string name;
     public string url;

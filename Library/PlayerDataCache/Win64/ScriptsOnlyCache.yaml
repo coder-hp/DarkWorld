@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ArrowScript
     - BagLayer
     - BloodBar
     - CameraTrack
@@ -21,8 +22,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -62,6 +65,8 @@ ScriptsOnlyBuild:
     - Class: 43
       Script: {instanceID: 0}
     - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
@@ -136,9 +141,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12888}
     - Class: 114
-      Script: {instanceID: 12980}
+      Script: {instanceID: 12948}
     - Class: 114
-      Script: {instanceID: 13054}
+      Script: {instanceID: 12982}
+    - Class: 114
+      Script: {instanceID: 13056}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -578,7 +585,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 31fa0c7c0de820e519d1bd401da82c63
+      Hash: 13abbfd5767cfa440dc01129aaee3f5a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HeroScript
@@ -606,6 +613,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TimerUtil
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ArrowScript
   - hash:
       serializedVersion: 2
       Hash: 8cd1cbba27f3cb1717254f668e9e0d5a
@@ -711,4 +724,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: G:/Unity Project/DarkWorld/output/pc/DarkWorld.exe
+  playerPath: D:/develop/git/DarkWorld/output/pc/DarkWorld.exe

@@ -6,13 +6,13 @@ public class LocalDataManager
 {
     public static string account;
     public static string password;
-    public static string beforeServer;
+    public static int beforeServer;
 
     public static void init()
     {
         account = PlayerPrefs.GetString("account","");
         password = PlayerPrefs.GetString("password", "");
-        beforeServer = PlayerPrefs.GetString("beforeServer", "");
+        beforeServer = PlayerPrefs.GetInt("beforeServer", 1);
     }
 
     public static void setAccountData(string _account,string _password)
@@ -24,10 +24,10 @@ public class LocalDataManager
         PlayerPrefs.SetString("password", password);
     }
 
-    public static void setBeforeServer(string ip)
+    public static void setBeforeServer(int id)
     {
-        beforeServer = ip;
+        beforeServer = id;
 
-        PlayerPrefs.SetString("beforeServer", beforeServer);
+        PlayerPrefs.SetInt("beforeServer", beforeServer);
     }
 }

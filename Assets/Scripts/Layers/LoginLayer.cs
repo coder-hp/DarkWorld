@@ -71,7 +71,7 @@ public class LoginLayer : MonoBehaviour
              int serverIndex = 0;
              for(int i = 0; i < ServerConfigEntity.getInstance().data_list.Count; i++)
              {
-                 if(ServerConfigEntity.getInstance().data_list[i].ip == LocalDataManager.beforeServer)
+                 if(ServerConfigEntity.getInstance().data_list[i].id == LocalDataManager.beforeServer)
                  {
                      serverIndex = i;
                      break;
@@ -224,7 +224,7 @@ public class LoginLayer : MonoBehaviour
                 UserData.fashiLevel = s2c.fashiLevel;
                 UserData.huanshiLevel = s2c.huanshiLevel;
 
-                LocalDataManager.setBeforeServer(curServerConfigData.ip);
+                LocalDataManager.setBeforeServer(curServerConfigData.id);
                 LocalDataManager.setAccountData(text_login_account.text, text_login_password.text);
 
                 ToastScript.show("登录成功");
@@ -245,7 +245,7 @@ public class LoginLayer : MonoBehaviour
                 UserData.fashiLevel = s2c.fashiLevel;
                 UserData.huanshiLevel = s2c.huanshiLevel;
 
-                LocalDataManager.setBeforeServer(curServerConfigData.ip);
+                LocalDataManager.setBeforeServer(curServerConfigData.id);
                 LocalDataManager.setAccountData(text_register_account.text, text_register_password.text);
 
                 ToastScript.show("注册成功");
